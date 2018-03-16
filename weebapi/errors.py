@@ -8,3 +8,11 @@ class MissingRequiredArguments(Exception):
 
 class WeirdResponse(Exception):
     pass
+
+
+class SpecifyClient(Exception):
+    pass
+
+
+class Forbidden(Exception):
+    pass

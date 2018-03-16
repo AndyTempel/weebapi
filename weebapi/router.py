@@ -18,7 +18,7 @@ class Route(object):
         return self.url
 
     def format_url(self, *args) -> str:
-        return self.url.format(args)
+        return self.url.format(*args)
 
 
 class Router(object):
