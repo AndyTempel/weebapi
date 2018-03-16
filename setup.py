@@ -16,11 +16,16 @@ with open('weebapi/__init__.py') as f:
 if not version:
     raise RuntimeError('Version is not set')
 
+readme = ''
+with open('README.rst') as f:
+    readme = f.read()
+
 setup(
     name='weebapi',
     packages=['weebapi'],
     version=version,
     description='Weeb.sh API Wrapper, customised for use in discord.py',
+    long_description=readme,
     author='AndyTempel',
     author_email='andraz@korenc.eu',
     url='https://github.com/AndyTempel/weebapi',
