@@ -12,6 +12,11 @@ class Route(object):
             raise RequireFormatting
         return self.url
 
+    def __get__(self, instance, owner):
+        if self.require_format:
+            raise RequireFormatting
+        return self.url
+
     def format_url(self, *args):
         return self.url.format(args)
 
