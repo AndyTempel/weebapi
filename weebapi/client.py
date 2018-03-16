@@ -1,5 +1,3 @@
-from typing import Union
-
 from .errors import *
 from .request_lib import krequest
 from .router import Router
@@ -27,7 +25,7 @@ class Client(object):
             bot.weebsh = cls(api_key, bot=bot, *args, **kwargs)
             return bot.weebsh
 
-    async def get_random(self, tags: Union(str, list) = None, image_type: str = None, nsfw: int = 1,
+    async def get_random(self, tags: str or list = None, image_type: str = None, nsfw: int = 1,
                          hidden: bool = False, file_type: str = None):
         params = dict
         if tags:
