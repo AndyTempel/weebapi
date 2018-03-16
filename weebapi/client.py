@@ -57,4 +57,5 @@ class Client(object):
             else:
                 raise ValueError("Invalid filetype. (Available: jpg, jpeg, png, gif)")
         g = await self.request.get(self.route.random, params=params)
-        return Image.parse(g)
+        return Image(g["id"], g["type"], g["baseType"], g["nsfw"], g["fileType"], g["mimeType"], g["tags"], g["url"],
+                     g["hidden"], g["account"], g.get("source", ""))

@@ -1,5 +1,5 @@
-from .tag import Tag
 from .type import ImageType
+from .tag import Tag
 
 
 class Image(object):
@@ -19,9 +19,3 @@ class Image(object):
 
     def __str__(self):
         return self.url
-
-    @classmethod
-    def parse(cls, response):
-        return cls(response["id"], response["type"], response["baseType"], response["nsfw"], response["fileType"],
-                   response["mimeType"], response["tags"], response["url"], response["hidden"], response["account"],
-                   response.get("source", ""))
