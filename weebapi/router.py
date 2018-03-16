@@ -7,17 +7,17 @@ class Route(object):
         self.method = method
         self.require_format = require_format
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.require_format:
             raise RequireFormatting
         return self.url
 
-    def __get__(self, instance, owner):
+    def __get__(self, instance, owner) -> str:
         if self.require_format:
             raise RequireFormatting
         return self.url
 
-    def format_url(self, *args):
+    def format_url(self, *args) -> str:
         return self.url.format(args)
 
 
@@ -26,11 +26,12 @@ class Router(object):
         if not base_url.endswith("/"):
             base_url += "/"
         self.base_url = base_url
-        self.upload = Route(self.base_url + "upload", "POST")
-        self.types = Route(self.base_url + "types", "GET")
-        self.tags = Route(self.base_url + "tags", "GET")
-        self.random = Route(self.base_url + "random", "GET")
-        self.image = Route(self.base_url + "info/{}", "GET", True)
-        self.image_add_tags = Route(self.base_url + "info/{}/tags", "POST", True)
-        self.image_remove_tags = Route(self.base_url + "info/{}/tags", "DELETE", True)
-        self.image_remove = Route(self.base_url + "info/{}", "DELETE", True)
+        self.base_image = base_url + "images/"
+        self.upload = Route(self.base_image + "upload", "POST")
+        self.types = Route(self.base_image + "types", "GET")
+        self.tags = Route(self.base_image + "tags", "GET")
+        self.random = Route(self.base_image + "random", "GET")
+        self.image = Route(self.base_image + "info/{}", "GET", True)
+        self.image_add_tags = Route(self.base_image + "info/{}/tags", "POST", True)
+        self.image_remove_tags = Route(self.base_image + "info/{}/tags", "DELETE", True)
+        self.image_remove = Route(self.base_image + "info/{}", "DELETE", True)

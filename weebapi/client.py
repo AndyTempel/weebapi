@@ -27,7 +27,7 @@ class Client(object):
 
     async def get_random(self, tags: str or list = None, image_type: str = None, nsfw: int = 1,
                          hidden: bool = False, file_type: str = None):
-        params = dict
+        params = {}
         if tags:
             if isinstance(tags, str):
                 params.update({"tags": tags})

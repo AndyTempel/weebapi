@@ -2,7 +2,7 @@ __title__ = 'weebapi'
 __author__ = 'AndyTempel'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2018 AndyTempel'
-__version__ = '0.1.0b'
+__version__ = '0.1.1b'
 
 import logging
 

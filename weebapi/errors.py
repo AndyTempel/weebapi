@@ -4,3 +4,7 @@ class RequireFormatting(Exception):
 
 class MissingRequiredArguments(Exception):
     pass
+
+
+class WeirdResponse(Exception):
+    pass

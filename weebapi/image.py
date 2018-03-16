@@ -1,3 +1,4 @@
+from .errors import *
 from .tag import Tag
 from .type import ImageType
 
@@ -22,6 +23,14 @@ class Image(object):
 
     @classmethod
     def parse(cls, response):
-        return cls(response["id"], response["type"], response["baseType"], response["nsfw"], response["fileType"],
-                   response["mimeType"], response["tags"], response["url"], response["hidden"], response["account"],
-                   response.get("source", ""))
+        status = response.get("status", 200)
+        if status != 200:
+            raise FileNotFoundError("This resource does not exist or you are not allowed to access.")
+        try:
+            data = cls(response["id"], response["type"], response["baseType"], response["nsfw"], response["fileType"],
+                       response["mimeType"], response["tags"], response["url"], response["hidden"], response["account"],
+                       response.get("source", ""))
+        except KeyError:
+            raise WeirdResponse
+        else:
+            return data

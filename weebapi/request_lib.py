@@ -1,4 +1,5 @@
 import sys
+import traceback
 
 import aiohttp
 
@@ -23,6 +24,8 @@ class krequest(object):
             try:
                 return await response.json()
             except Exception:
+                print(traceback.format_exc())
+                print(response)
                 return {}
         else:
             return await response.text()

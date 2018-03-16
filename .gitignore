@@ -6,4 +6,3 @@ build/
 dist/
 
 weebapi\.egg-info/
-examples/
