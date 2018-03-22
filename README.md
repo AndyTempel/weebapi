@@ -44,7 +44,7 @@ weeb = Client(api_key="VeryNiceKey123")
 
 @bot.command()
 async def owo(ctx):
-    image = await bot.weebsh.get_random(image_type="owo")
+    image = await weeb.get_random(image_type="owo")
     await ctx.send(str(image))
 
 >>> https://cdn.weeb.sh/images/SklMOkytDb.jpeg
