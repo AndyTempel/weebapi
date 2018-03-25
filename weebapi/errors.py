@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class RequireFormatting(Exception):
     pass
 
@@ -15,4 +18,8 @@ class SpecifyClient(Exception):
 
 
 class Forbidden(Exception):
+    pass
+
+
+class DiscordPyNotInstalled(Exception):
     pass

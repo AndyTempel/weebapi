@@ -1,4 +1,6 @@
-from .errors import RequireFormatting
+# -*- coding: utf-8 -*-
+
+from weebapi.errors import RequireFormatting
 
 
 class Route(object):
@@ -27,11 +29,20 @@ class Router(object):
             base_url += "/"
         self.base_url = base_url
         self.base_image = base_url + "images/"
+        self.base_imggen = base_url + "auto-image/"
+
         self.upload = Route(self.base_image + "upload", "POST")
         self.types = Route(self.base_image + "types", "GET")
         self.tags = Route(self.base_image + "tags", "GET")
         self.random = Route(self.base_image + "random", "GET")
+
         self.image = Route(self.base_image + "info/{}", "GET", True)
         self.image_add_tags = Route(self.base_image + "info/{}/tags", "POST", True)
         self.image_remove_tags = Route(self.base_image + "info/{}/tags", "DELETE", True)
         self.image_remove = Route(self.base_image + "info/{}", "DELETE", True)
+
+        self.imggen_simple = Route(self.base_imggen + "generate", "GET")
+        self.imggen_status = Route(self.base_imggen + "discord-status", "GET")
+        self.imggen_license = Route(self.base_imggen + "license", "POST")
+        self.imggen_waifu = Route(self.base_imggen + "waifu-insult", "POST")
+        self.imggen_love = Route(self.base_imggen + "love-ship", "POST")

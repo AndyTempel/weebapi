@@ -4,6 +4,10 @@
 
 ## Pluggable Weeb.sh API Wrapper
 
+### Documentation
+
+**All available documentation can be found here:** [weebapi.readthedocs.io](https://weebapi.readthedocs.io)
+
 ### How to install:
 
 **1. With pip**
