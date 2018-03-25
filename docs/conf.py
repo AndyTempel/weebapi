@@ -14,8 +14,8 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
 
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
@@ -48,9 +48,9 @@ extensions = [
 ]
 
 if on_rtd:
-  extensions.append('sphinxcontrib.napoleon')
+    extensions.append('sphinxcontrib.napoleon')
 else:
-  extensions.append('sphinx.ext.napoleon')
+    extensions.append('sphinx.ext.napoleon')
 
 autodoc_member_order = 'bysource'
 
@@ -96,7 +96,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -133,7 +132,6 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'weebapidoc'
 
-
 # -- Options for LaTeX output ------------------------------------------------
 
 latex_elements = {
@@ -162,7 +160,6 @@ latex_documents = [
      'AndyTempel', 'manual'),
 ]
 
-
 # -- Options for manual page output ------------------------------------------
 
 # One entry per manual page. List of tuples
@@ -171,7 +168,6 @@ man_pages = [
     (master_doc, 'weebapi', 'weebapi Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output ----------------------------------------------
 
@@ -183,7 +179,6 @@ texinfo_documents = [
      author, 'weebapi', 'One line description of project.',
      'Miscellaneous'),
 ]
-
 
 # -- Options for Epub output -------------------------------------------------
 
@@ -204,7 +199,6 @@ epub_copyright = copyright
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
-
 
 # -- Extension configuration -------------------------------------------------
 
