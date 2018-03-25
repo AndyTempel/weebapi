@@ -14,19 +14,19 @@
 #
 import os
 import sys
-sys.path.insert(0, 'C:\Projects\pip\weebapi')
+sys.path.insert(0, os.path.abspath('..'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = '\'weebapi\''
-copyright = '2018, \'AndyTempel\''
-author = '\'AndyTempel\''
+project = 'weebapi'
+copyright = '2018, AndyTempel'
+author = 'AndyTempel'
 
 # The short X.Y version
-version = '\'0.1.3b\''
+version = '0.1.5b'
 # The full version, including alpha/beta/rc tags
-release = '\'0.1.3b\''
+release = '0.1.5b'
 
 on_rtd = os.getenv('READTHEDOCS') == 'True'
 
@@ -59,7 +59,8 @@ extlinks = {
 }
 
 # Links used for cross-referencing stuff in other documentation
-intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None),
+                       'discord': ('https://discordpy.readthedocs.io/en/rewrite', None)}
 
 rst_prolog = """
 .. |coro| replace:: This function is a |corourl|_.
@@ -101,7 +102,9 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
+
+html_experimental_html5_writer = True
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -155,8 +158,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'weebapi.tex', '\'weebapi\' Documentation',
-     '\'AndyTempel\'', 'manual'),
+    (master_doc, 'weebapi.tex', 'weebapi Documentation',
+     'AndyTempel', 'manual'),
 ]
 
 
@@ -165,7 +168,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'weebapi', '\'weebapi\' Documentation',
+    (master_doc, 'weebapi', 'weebapi Documentation',
      [author], 1)
 ]
 
@@ -176,7 +179,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'weebapi', '\'weebapi\' Documentation',
+    (master_doc, 'weebapi', 'weebapi Documentation',
      author, 'weebapi', 'One line description of project.',
      'Miscellaneous'),
 ]
