@@ -7,7 +7,7 @@ __title__ = 'weebapi'
 __author__ = 'AndyTempel'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2018 AndyTempel'
-__version__ = '0.1.5b'
+__version__ = '0.1.6b'
 
 import logging
 from collections import namedtuple
@@ -18,7 +18,7 @@ from weebapi.client import Client
 
 VersionInfo = namedtuple('VersionInfo', 'major minor micro releaselevel serial')
 
-version_info = VersionInfo(major=0, minor=1, micro=5, releaselevel='beta', serial=0)
+version_info = VersionInfo(major=0, minor=1, micro=6, releaselevel='beta', serial=0)
 
 try:
     from logging import NullHandler

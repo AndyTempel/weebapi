@@ -8,13 +8,6 @@ This module represents the image generation interface.
     have a temporary folder images are placed in a current directory. **Please note that you should practice
     file deletion after usage.**
 
-Image generators
--------------------
-
-Here is a collection of all available image generators.
-
-.. note::
-    Currently work in progress.
 
 Image file object
 -------------------
@@ -26,4 +19,17 @@ This also integrates nicely with discord.py
     By accessing the ``discord_file`` property you can get :class:`discord.File` object.
 
 .. autoclass:: weebapi.data_objects.ImageFile
+    :members:
+
+Generators
+-----------
+
+Here is the list and the description of all available generators.
+
+.. note::
+    Thus this is represented as a separate class, it's loaded automatically into the :class:`weebapi.Client`.
+    If we assume that your client object is ``weeb = Client(token="SomeToken123")`` then you access simple
+    image generator like this: ``generator = await weeb.img_gen.get_simple("won")``.
+
+.. autoclass:: weebapi.img_gen.ImgGen
     :members:
