@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import logging
 import sys
 import traceback
 
@@ -8,9 +9,11 @@ import aiohttp
 from weebapi import __version__
 from .errors import *
 
+logger = logging.getLogger()
+
 
 class krequest(object):
-    def __init__(self, return_json=True, global_headers=[]):
+    def __init__(self, return_json=True, global_headers={}):
         self.headers = {
             "User-Agent": "WeebAPI.py/{} (Github: AndyTempel) KRequests/alpha "
                           "(Custom asynchronous HTTP client)".format(__version__),
@@ -18,20 +21,31 @@ class krequest(object):
         }
         self.return_json = return_json
         for name, value in global_headers:
+            logger.info(f"WEEB.SH Added global header {name}")
             self.headers.update({
                 name: value
             })
 
+        logger.debug(f"Here are global headers: {str(self.headers)}")
+
     async def _proc_resp(self, response):
+        logger.debug(f"Request {response.method}: {response.url}")
+        logger.debug(f"Response headers: {str(response.headers)}")
         if self.return_json:
             try:
-                return await response.json()
+                resp = await response.json()
+                logger.debug(f"Response content: {str(resp)}")
+                return resp
             except Exception:
                 print(traceback.format_exc())
                 print(response)
+                resp = await response.text()
+                logger.debug(f"Response content: {str(resp)}")
                 return {}
         else:
-            return await response.text()
+            resp = await response.text()
+            logger.debug(f"Response content: {str(resp)}")
+            return resp
 
     async def get(self, url, params=None, headers=None, verify=True):
         headers = headers or {}

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 
 from .data_objects import *
 from .request_lib import krequest
@@ -7,6 +8,7 @@ from .errors import *
 from .img_gen import ImgGen
 
 BASE_URL = "https://api.weeb.sh/"
+logger = logging.getLogger()
 
 
 class Client:
@@ -55,6 +57,11 @@ class Client:
         ])
         self.bot = bot
         self.img_gen = ImgGen(self)
+
+        logger_string = str("Wolke " if wolke_token else "Bearer ") + self.api_key[-4:].rjust(len(self.api_key), "*")
+        logger.info(f"WEEB.SH Logging in as {logger_string}")
+
+
 
     @classmethod
     def pluggable(cls, bot, api_key: str, *args, **kwargs):

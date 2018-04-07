@@ -45,7 +45,7 @@ class ImgGen:
 
         filename = os.path.join(tempfile.gettempdir(), f"img_gen_simple_{uuid.uuid4()}.png")
 
-        r = await self.http.download_get(self.client.route.imggen_simple, filename, params=params)
+        r = await self.http.download_get(str(self.client.route.imggen_simple), filename, params=params)
 
         return ImageFile(filename)
 
@@ -82,7 +82,7 @@ class ImgGen:
 
         filename = os.path.join(tempfile.gettempdir(), f"img_gen_status_{uuid.uuid4()}.png")
 
-        r = await self.http.download_get(self.client.route.imggen_status, filename, params=params)
+        r = await self.http.download_get(str(self.client.route.imggen_status), filename, params=params)
 
         return ImageFile(filename)
 
@@ -121,7 +121,7 @@ class ImgGen:
 
         filename = os.path.join(tempfile.gettempdir(), f"img_gen_spook_{uuid.uuid4()}.png")
 
-        r = await self.http.download_post(self.client.route.imggen_license, filename, json=params)
+        r = await self.http.download_post(str(self.client.route.imggen_license), filename, json=params)
 
         return ImageFile(filename)
 
@@ -145,7 +145,7 @@ class ImgGen:
 
         filename = os.path.join(tempfile.gettempdir(), f"img_gen_waifu_{uuid.uuid4()}.png")
 
-        r = await self.http.download_post(self.client.route.imggen_waifu, filename, json=params)
+        r = await self.http.download_post(str(self.client.route.imggen_waifu), filename, json=params)
 
         return ImageFile(filename)
 
@@ -172,6 +172,6 @@ class ImgGen:
 
         filename = os.path.join(tempfile.gettempdir(), f"img_gen_love_{uuid.uuid4()}.png")
 
-        r = await self.http.download_post(self.client.route.imggen_love, filename, json=params)
+        r = await self.http.download_post(str(self.client.route.imggen_love), filename, json=params)
 
         return ImageFile(filename)

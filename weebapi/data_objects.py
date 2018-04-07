@@ -290,7 +290,7 @@ class ImageFile:
     @property
     def discord_file(self):
         if discord:
-            return discord.File(open(self.file_path), 'rb')
+            return discord.File(open(self.file_path, 'rb'))
         else:
             raise DiscordPyNotInstalled
 
