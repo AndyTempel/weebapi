@@ -165,13 +165,13 @@ class Client:
         g = await self.request.get(str(self.route.types), params=params)
         status = int(g.get("status", 200))
         if status != 200 and status != 403:
-            raise FileNotFoundError("This resource does not exist or you are not allowed to access.")
+            raise NotFound("This resource does not exist or you are not allowed to access.")
         elif status == 403:
             raise Forbidden
         for p in g["preview"]:
             if p["type"] == type_name:
                 return Preview.parse(p, self)
-        raise FileNotFoundError("Preview does not exist.")
+        raise NotFound("Preview does not exist.")
 
     async def get_types(self, hidden: bool = False, nsfw: int = 1) -> list:
         """|coro|
@@ -218,7 +218,7 @@ class Client:
         g = await self.request.get(str(self.route.types), params=params)
         status = int(g.get("status", 200))
         if status != 200 and status != 403:
-            raise FileNotFoundError("This resource does not exist or you are not allowed to access.")
+            raise NotFound("This resource does not exist or you are not allowed to access.")
         elif status == 403:
             raise Forbidden
         return [ImageType(t, self) for t in g['types']]
@@ -269,7 +269,7 @@ class Client:
         g = await self.request.get(str(self.route.tags), params=params)
         status = int(g.get("status", 200))
         if status != 200 and status != 403:
-            raise FileNotFoundError("This resource does not exist or you are not allowed to access.")
+            raise NotFound("This resource does not exist or you are not allowed to access.")
         elif status == 403:
             raise Forbidden
         return [Tag(t, self) for t in g['tags']]

@@ -23,3 +23,7 @@ class Forbidden(Exception):
 
 class DiscordPyNotInstalled(Exception):
     pass
+
+
+class NotFound(Exception):
+    pass
