@@ -2,12 +2,13 @@
 import logging
 
 from .data_objects import *
-from .request_lib import krequest
-from .router import Router
 from .errors import *
 from .img_gen import ImgGen
+from .request_lib import krequest
+from .router import Router
 
 BASE_URL = "https://api.weeb.sh/"
+BASE_URL_V2 = "https://api-v2.weeb.sh/"
 logger = logging.getLogger()
 
 
@@ -33,6 +34,10 @@ class Client:
         *Not required.*
         Is the api token type Wolke or Bearer.
         **Default:** True
+    v2_api: bool[Optional]
+        *Not required.*
+        Use v2 API.
+        **Default:** False
     check_ssl: bool[Optional]
         *Not required.*
         Enable SSL certificate verification.
@@ -47,8 +52,11 @@ class Client:
         Your bot client from discord.py
 
     """
-    def __init__(self, api_key: str, wolke_token: bool = True, check_ssl: bool = True, base_url: str = BASE_URL,
-                 bot=None):
+
+    def __init__(self, api_key: str, wolke_token: bool = True, check_ssl: bool = True, v2_api: bool = False,
+                 base_url: str = BASE_URL, bot=None):
+        if v2_api is True:
+            base_url = BASE_URL_V2
         self.api_key = api_key
         self.check_ssl = check_ssl
         self.route = Router(base_url)
@@ -60,8 +68,6 @@ class Client:
 
         logger_string = str("Wolke " if wolke_token else "Bearer ") + self.api_key[-4:].rjust(len(self.api_key), "*")
         logger.info(f"WEEB.SH Logging in as {logger_string}")
-
-
 
     @classmethod
     def pluggable(cls, bot, api_key: str, *args, **kwargs):
