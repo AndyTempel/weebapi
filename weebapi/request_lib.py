@@ -13,10 +13,12 @@ logger = logging.getLogger()
 
 
 class krequest(object):
-    def __init__(self, return_json=True, global_headers={}):
+    def __init__(self, return_json=True, global_headers={}, **kwargs):
+        self.bot = kwargs.get("bot", None)
         self.headers = {
-            "User-Agent": "WeebAPI.py/{} (Github: AndyTempel) KRequests/alpha "
-                          "(Custom asynchronous HTTP client)".format(__version__),
+            "User-Agent": "{}WeebAPI.py/{} (Github: AndyTempel) KRequests/alpha "
+                          "(Custom asynchronous HTTP client)".format(
+                f"{self.bot.user.username}/{self.bot.user.discriminator} " if self.bot else "", __version__),
             "X-Powered-By": "{}".format(sys.version)
         }
         self.return_json = return_json
