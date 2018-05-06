@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import asyncio
 import logging
 
 from .data_objects import *
@@ -38,10 +39,6 @@ class Client:
         *Not required.*
         Use v2 API.
         **Default:** False
-    check_ssl: bool[Optional]
-        *Not required.*
-        Enable SSL certificate verification.
-        **Default:** True
     **base_url: str[Optional]
         *Not required.*
         Specify different DBL API url.
@@ -50,19 +47,21 @@ class Client:
         Specify different base url.
     **bot: Bot or AutoShardedBot
         Your bot client from discord.py
+    **loop: asyncio loop
+        Your asyncio loop.
 
     """
 
-    def __init__(self, api_key: str, wolke_token: bool = True, check_ssl: bool = True, v2_api: bool = False,
-                 base_url: str = BASE_URL, bot=None):
+    def __init__(self, api_key: str, wolke_token: bool = True, v2_api: bool = False,
+                 base_url: str = BASE_URL, bot=None, loop=asyncio.get_event_loop()):
         if v2_api is True:
             base_url = BASE_URL_V2
         self.api_key = api_key
-        self.check_ssl = check_ssl
+        self._loop = loop
         self.route = Router(base_url)
         self.request = krequest(global_headers=[
             ("Authorization", f"Wolke {self.api_key}" if wolke_token else f"Bearer {self.api_key}")
-        ])
+        ], loop=self._loop)
         self.bot = bot
         self.img_gen = ImgGen(self)
 
