@@ -7,7 +7,7 @@ __title__ = 'weebapi'
 __author__ = 'AndyTempel'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2018 AndyTempel'
-__version__ = '0.1.12b'
+__version__ = '0.1.13b'
 
 import logging
 from collections import namedtuple

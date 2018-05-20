@@ -56,23 +56,31 @@ class krequest(object):
         headers = headers or {}
         headers.update(self.headers)
         async with self.session.get(url, params=params, headers=headers) as resp:
-            return await self._proc_resp(resp)
+                r = await self._proc_resp(resp)
+                await resp.release()
+                return r
 
     async def delete(self, url, params=None, headers=None, verify=True):
         headers = headers or {}
         headers.update(self.headers)
         async with self.session.delete(url, params=params, headers=headers) as resp:
-            return await self._proc_resp(resp)
+                r = await self._proc_resp(resp)
+                await resp.release()
+                return r
 
     async def post(self, url, data=None, json=None, headers=None, verify=True):
         headers = headers or {}
         headers.update(self.headers)
         if json is not None:
             async with self.session.post(url, json=json, headers=headers) as resp:
-                return await self._proc_resp(resp)
+                r = await self._proc_resp(resp)
+                await resp.release()
+                return r
         else:
             async with self.session.post(url, data=data, headers=headers) as resp:
-                return await self._proc_resp(resp)
+                r = await self._proc_resp(resp)
+                await resp.release()
+                return r
 
     async def download_get(self, url, filename, params=None, headers=None, verify=True):
         headers = headers or {}
