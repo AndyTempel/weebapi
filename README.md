@@ -1,6 +1,7 @@
-﻿# weebapi
+# weebapi
 
 ![img](https://img.shields.io/pypi/v/weebapi.svg) ![img2](https://img.shields.io/pypi/pyversions/weebapi.svg)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAndyTempel%2Fweebapi.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FAndyTempel%2Fweebapi?ref=badge_shield)
 
 ## Pluggable Weeb.sh API Wrapper
 
@@ -53,3 +54,7 @@ async def owo(ctx):
 
 >>> https://cdn.weeb.sh/images/SklMOkytDb.jpeg
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAndyTempel%2Fweebapi.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FAndyTempel%2Fweebapi?ref=badge_large)
