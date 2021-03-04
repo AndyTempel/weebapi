@@ -7,4 +7,4 @@ idna-ssl>=1.0.1
 multidict>=4.1.0
 yarl>=1.1.1
 Sphinx==1.8.0
-sphinxcontrib-napoleon==0.6.1
+sphinxcontrib-napoleon==0.7
